@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">abcplay</string>
+    <string name="bem_vindo">Bem-vindo</string>
+    <string name="login">Login:</string>
 </resources>
