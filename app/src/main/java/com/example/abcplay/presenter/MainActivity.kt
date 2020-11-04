@@ -2,6 +2,7 @@ package com.example.abcplay.presenter
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abcplay.api.ApiInterface
@@ -10,6 +11,7 @@ import com.example.abcplay.databinding.ActivityMainBinding
 import com.example.abcplay.model.SignInBody
 import com.example.abcplay.model.Token
 import com.example.abcplay.model.UserBody
+import com.google.android.material.textfield.TextInputLayout
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -19,26 +21,27 @@ import kotlin.coroutines.coroutineContext
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var email: String = ""
-    private var password: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(this.layoutInflater)
-        setContentView(this.binding.root)
+        val view = binding.root
+        setContentView(view)
 
-//        binding.emailInputText.editText?.text.toString()
-//        binding.passwordInput.editText?.text.toString()
+       val email: TextInputLayout =  binding.emailInputText
+       val password: TextInputLayout =  binding.passwordInput
 
         binding.buttonLogin.setOnClickListener {
-            if (binding.emailInputText.editText?.text.toString().isBlank() || binding.passwordInput.editText?.text.toString().isBlank()){
+
+            if (email.toString().isBlank() || password.toString().isBlank()) {
                 Toast.makeText(
                         this,
                         "Informe email e senha!",
                         Toast.LENGTH_SHORT
                 ).show()
-            }else{
-                signin(binding.emailInputText.editText?.text.toString(), binding.passwordInput.editText?.text.toString())
+            } else {
+                signin(email.toString(), password.toString())
             }
 
         }
@@ -85,9 +88,9 @@ class MainActivity : AppCompatActivity() {
             password: String,
             name: String,
             type: String
-            ) {
+    ) {
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        val registerInfo = UserBody(email, password, name, type="estudante")
+        val registerInfo = UserBody(email, password, name, type = "estudante")
 
         retIn.registerUser(registerInfo).enqueue(object :
                 retrofit2.Callback<ResponseBody> {
