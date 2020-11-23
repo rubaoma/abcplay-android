@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundWhite"
+    tools:context=".presenter.GameActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pergunta_do_quiz"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_awser_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pergunta_do_quiz"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_awser_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pergunta_do_quiz"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_awser_tree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pergunta_do_quiz"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_awser_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/pergunta_do_quiz"
+            android:textColor="@color/text_black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</ScrollView>

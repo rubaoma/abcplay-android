@@ -2,7 +2,9 @@ package com.example.abcplay.presenter
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abcplay.api.ApiInterface
@@ -12,15 +14,19 @@ import com.example.abcplay.model.SignInBody
 import com.example.abcplay.model.Token
 import com.example.abcplay.model.UserBody
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.Dispatcher
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
+import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.coroutineContext
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,20 +60,24 @@ class MainActivity : AppCompatActivity() {
 
         retIn.signin(signInInfo).enqueue(object : retrofit2.Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+
+
                 if (response.code() == 200) {
 
                     val token = response.body()
+
+
                     val intent = Intent(
                             this@MainActivity,
                             WelcomeActivity::class.java
                     )
                     startActivity(intent)
 
-                    Toast.makeText(
-                            this@MainActivity,
-                            "Login sucess",
-                            Toast.LENGTH_SHORT
-                    ).show()
+//                    Toast.makeText(
+//                            this@MainActivity,
+//                            "Login sucess",
+//                            Toast.LENGTH_SHORT
+//                    ).show()
                 }
             }
 
